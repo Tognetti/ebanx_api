@@ -50,6 +50,8 @@ exports.postEvent = (req, res) => {
                 if(!destinationAccount) {
                     destinationAccount = new Account(req.body.destination, amount);
                     destinationAccount.save();
+                } else {
+                    destinationAccount.deposit(amount);
                 }
                 originAccount.withdraw(amount);
 
