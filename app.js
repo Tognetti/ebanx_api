@@ -1,13 +1,16 @@
 const express = require('express');
+
 const eventRoute = require('./routes/event');
 const balanceRoute = require('./routes/balance');
+const resetRoute = require('./routes/reset');
 
 const port = 3003;
+
 const app = express();
+
 app.use(express.json());
 
-global.accounts = [];
-
+app.use('/reset', resetRoute);
 app.use('/balance', balanceRoute);
 app.use('/event', eventRoute);
 
